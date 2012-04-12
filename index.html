@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Safe Nigeria App</title>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="Css/jquery.mobile-1.0.1.min.css" />
+    <script src="Script/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
+    <script type="text/javascript">
+        $(document).bind("mobileinit", function () {
+
+            $.mobile.allowCrossDomainPages = true;
+            $.support.cors = true;        
+        
+        });
+    </script>
+    <script src="Script/jquery.mobile-1.0.1.min.js"></script>
+    <script type="text/javascript" src="Script/safeapp.js"></script>
+  
+</head>
+<body>
+    <div data-role="page" id="Home" data-theme="c">
+        <div data-role="header" data-theme="b">
+            <div data-role="navbar" data-position="fixed">
+                <ul>
+                    <li><a href="#Home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
+                    <li><a href="#Alerts" data-icon="alert">Alerts</a></li>
+                    <li><a href="#Tips" data-icon="star">Tips</a></li>
+                    <li><a href="#Crime" data-icon="info" data-iconpos="notext" data-direction="reverse">
+                        Report</a></li>
+                    <li><a href="#Station" data-iconpos="left" data-icon="grid" data-direction="reverse">
+                        Stations</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <div data-role="content">
+            <img src="images/CB104925_LoRes.jpg" style="width: 273px; height: 68px"/>
+            <ul data-role="listview" data-inset="true" data-theme="d" data-dividertheme="e">
+                <li data-role="list-divider">Overview</li>
+                <li><a href="#Alerts" data-transition="flip">Security News/Alerts</a></li>
+                <li><a href="#Tips" data-transition="flip">Daily Security Tips</a></li>
+                <li><a href="#Crime" data-transition="flip">Report Crime</a></li>
+                <li><a href="#FeedBack"data-transition="flip" >FeedBack/Info</a></li>
+                <li><a href="#" data-transition="flip">State/Town Safety Index</a></li>
+                <li><a href="#" data-transition="flip">Nearest Security Station</a></li>
+            </ul>
+        </div>
+        <div data-role="footer" data-theme="a" data-position="fixed">
+        </div>
+    </div>
+    <!-- /page -->
+    <div data-role="page" id="Crime" data-theme="c">
+        <div data-role="header" data-theme="b">
+            <div data-role="navbar" data-position="fixed">
+                <ul>
+                    <li><a href="#Home" data-icon="home">Home</a></li>
+                    <li><a href="#Alerts" data-icon="alert">Alerts</a></li>
+                    <li><a href="#Tips" data-icon="star">Tips</a></li>
+                    <li><a href="#Crime" data-icon="info" class="ui-btn-active ui-state-persist">Report</a></li>
+                    <li><a href="#Station" data-icon="grid">Stations</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /header -->
+        <div data-role="content">
+            <form action="" method="post" data-theme="d">
+            <ul data-role="listview" data-theme="d" data-dividertheme="e" data-inset="true">
+                <li data-role="list-divider">Report Crime</li>
+                <li>
+                    <label for="select-choice-state">
+                        State:</label>
+                    <select name="select-choice-state" id="select-choice-state" data-native-menu="false">
+                        <option value="10">ABIA</option>
+                        <option value="2">ADAMAWA</option>
+                        <option value="3">AKWA IBOM</option>
+                        <option value="4">ANAMBRA</option>
+                        <option value="5">BAUCHI</option>
+                        <option value="6">BAYELSA</option>
+                        <option value="7">BENUE</option>
+                        <option value="8">BORNO</option>
+                        <option value="9">CROSS RIVER</option>
+                        <option value="10">DELTA</option>
+                        <option value="11">EDO</option>
+                        <option value="12">EBONYI</option>
+                        <option value="13">EKITI</option>
+                        <option value="14">ENUGU</option>
+                        <option value="15">GOMBE</option>
+                        <option value="16">IMO</option>
+                        <option value="17">JIGAWA</option>
+                        <option value="18">KADUNA</option>
+                        <option value="19">KANO</option>
+                        <option value="20">KATSINA</option>
+                        <option value="21">KEBBI</option>
+                        <option value="22">KOGI</option>
+                        <option value="23">KWARA</option>
+                        <option value="24">LAGOS</option>
+                        <option value="25">NIGER</option>
+                        <option value="26">OGUN</option>
+                        <option value="27">ONDO</option>
+                        <option value="28">OSUN</option>
+                        <option value="29">OYO</option>
+                        <option value="30">NASSARAWA</option>
+                        <option value="31">PLATEAU</option>
+                        <option value="32">RIVERS</option>
+                        <option value="33">SOKOTO</option>
+                        <option value="34">TARABA</option>
+                        <option value="35">YOBE</option>
+                        <option value="36">ZAMFARA</option>
+                    </select>
+                    <label for="location">
+                        Location:</label>
+                    <input type="text" name="location" id="location" value="" />
+                    <label for="select-choice-crime">
+                        Crime:</label>
+                    <select name="select-choice-1" id="select-choice-crime" data-native-menu="false">
+                        <option value="1">Robbery</option>
+                        <option value="2">Kidnap</option>
+                        <option value="3">Murder</option>
+                        <option value="3">Road Accident</option>
+                    </select>
+                    <label for="crimeDetails">
+                        Description:</label>
+                    <textarea name="textarea" id="crimeDetails">
+
+</textarea>
+                </li>
+            </ul>
+            </form>
+        </div>
+        <div data-role="footer" data-theme="b" data-position="fixed">
+            <div style="height: 4px">
+            </div>
+            <fieldset class="ui-grid-a">
+                <div class="ui-block-a">
+                    <button type="submit" id="crimeSubmit" data-theme="b" data-icon="arrow-r" data-iconpos="right"
+                        style="margin-right: 0px">
+                        Submit</button></div>
+                <div class="ui-block-b">
+                    <button type="submit" data-icon="delete" data-theme="c">
+                        Cancel</button></div>
+            </fieldset>
+        </div>
+    </div>
+    <div data-role="page" id="FeedBack" data-theme="c">
+        <div data-role="header" data-theme="b">
+            <div data-role="navbar" data-position="fixed" >
+                <ul>
+                    <li><a href="#Home" data-icon="home">Home</a></li>
+                    <li><a href="#Alerts" data-icon="alert">Alerts</a></li>
+                    <li><a href="#Tips" data-icon="star">Tips</a></li>
+                    <li><a href="#Crime" data-icon="info">Report</a></li>
+                    <li><a href="#Station" data-icon="grid">Stations</a></li>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /header -->
+        <div data-role="content">
+            <form action="" method="post" data-theme="d">
+            <ul data-role="listview" data-theme="d" data-dividertheme="e" data-inset="true">
+                <li data-role="list-divider">Information/Suggestion </li>
+                <li>
+                    <p>
+                        Kindly inform the security agencies of any<br />
+                        concern, which will be treated with confidentiality</p>
+                </li>
+                <li>
+                    <label for="select-choice-feedback-state">
+                        State:</label>
+                    <select name="select-choice-feedback-state" id="select-choice-feedback-state" data-native-menu="false">
+                        <option value="10">ABIA</option>
+                        <option value="2">ADAMAWA</option>
+                        <option value="3">AKWA IBOM</option>
+                        <option value="4">ANAMBRA</option>
+                        <option value="5">BAUCHI</option>
+                        <option value="6">BAYELSA</option>
+                        <option value="7">BENUE</option>
+                        <option value="8">BORNO</option>
+                        <option value="9">CROSS RIVER</option>
+                        <option value="10">DELTA</option>
+                        <option value="11">EDO</option>
+                        <option value="12">EBONYI</option>
+                        <option value="13">EKITI</option>
+                        <option value="14">ENUGU</option>
+                        <option value="15">GOMBE</option>
+                        <option value="16">IMO</option>
+                        <option value="17">JIGAWA</option>
+                        <option value="18">KADUNA</option>
+                        <option value="19">KANO</option>
+                        <option value="20">KATSINA</option>
+                        <option value="21">KEBBI</option>
+                        <option value="22">KOGI</option>
+                        <option value="23">KWARA</option>
+                        <option value="24">LAGOS</option>
+                        <option value="25">NIGER</option>
+                        <option value="26">OGUN</option>
+                        <option value="27">ONDO</option>
+                        <option value="28">OSUN</option>
+                        <option value="29">OYO</option>
+                        <option value="30">NASSARAWA</option>
+                        <option value="31">PLATEAU</option>
+                        <option value="32">RIVERS</option>
+                        <option value="33">SOKOTO</option>
+                        <option value="34">TARABA</option>
+                        <option value="35">YOBE</option>
+                        <option value="36">ZAMFARA</option>
+                    </select>
+                    <label for="feedback-location">
+                        Location:</label>
+                    <input type="text" name="feedback-location" id="feedback-location" value="" />
+                    <label for="feedback-subject">
+                        Subject:</label>
+                    <input type="text" name="feedback-subject" id="feedback-subject" value="" />
+                    <label for="feedback-crimeDetails">
+                        Description:</label>
+                    <textarea name="feedback-crimeDetails" id="feedback-crimeDetails">
+
+</textarea>
+                </li>
+            </ul>
+            </form>
+        </div>
+        <div data-role="footer" data-theme="b" data-position="fixed">
+            <div style="height: 4px">
+            </div>
+            <fieldset class="ui-grid-a">
+                <div class="ui-block-a">
+                    <button type="submit" id="FeedBack-Submit" data-theme="b" data-icon="arrow-r" data-iconpos="right" style="margin-right: 0px">
+                        Submit</button></div>
+                <div class="ui-block-b">
+                    <button type="submit" data-icon="delete" data-theme="c">
+                        Cancel</button></div>
+            </fieldset>
+        </div>
+    </div>
+    <div data-role="page" id="Tips" data-theme="c">
+        <div data-role="header" data-theme="b">
+            <div data-role="navbar" data-position="fixed">
+                <ul>
+                    <li><a href="#Home" data-icon="home">Home</a></li>
+                    <li><a href="#Alerts" data-icon="alert">Alerts</a></li>
+                    <li><a href="#Tips" data-icon="star" class="ui-btn-active ui-state-persist">Tips</a></li>
+                    <li><a href="#Crime" data-icon="info">Report</a></li>
+                    <li><a href="#Station" data-icon="grid">Stations</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /header -->
+        <div data-role="content" data-theme="c" class="ui-body ui-body-d">
+          
+            <ul data-role="listview" data-dividertheme="e" id="Tips-List" data-filter="true">            
+                
+            </ul>
+            <button type="submit" id="Button1" data-theme="b" data-icon="arrow-r" data-iconpos="right" style="margin-right: 0px">
+                        Submit</button>
+        </div>
+        <!-- /content -->
+       <!-- <div data-role="footer" data-position="fixed">
+            <h4>
+                Page Footer</h4>
+        </div>-->
+      
+    </div>
+    <div data-role="page" id="Alerts" data-theme="c">
+        <div data-role="header" data-theme="b">
+            <div data-role="navbar" data-position="fixed">
+                <ul>
+                    <li><a href="#Home" data-icon="home">Home</a></li>
+                    <li><a href="#Alerts" data-icon="alert" class="ui-btn-active ui-state-persist">Alerts</a></li>
+                    <li><a href="#Tips" data-icon="star">Tips</a></li>
+                    <li><a href="#Crime" data-icon="info">Report</a></li>
+                    <li><a href="#Station" data-icon="grid">Stations</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /header -->
+        <div data-role="content" data-theme="c" class="ui-body ui-body-d">
+            <ul data-role="listview" data-dividertheme="e">
+                <li data-role="list-divider">Security Alert and News</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <!-- /content -->
+        <div data-role="footer">
+            <h4>
+                Page Footer</h4>
+        </div>
+        <!-- /footer -->
+    </div>
+    <div data-role="page" id="Station" data-theme="c">
+        <div data-role="header" data-theme="b">
+            <div data-role="navbar" data-position="fixed">
+                <ul>
+                    <li><a href="#Home" data-icon="home">Home</a></li>
+                    <li><a href="#News" data-icon="alert">Alerts</a></li>
+                    <li><a href="#Tips" data-icon="star">Tips</a></li>
+                    <li><a href="#Crime" data-icon="info">Report</a></li>
+                    <li><a href="#Station" data-icon="grid" class="ui-btn-active ui-state-persist">Stations</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /header -->
+        <div data-role="content">
+        <button type="submit" id="Button2" data-theme="b" data-icon="arrow-r" data-iconpos="right" style="margin-right: 0px">
+                        Submit</button>
+       
+           <img id="station-map" src="" />
+        </div>
+        <!-- /content -->
+        <div data-role="footer">
+            <h4>
+                Page Footer</h4>
+        </div>
+        <!-- /footer -->
+    </div>
+     <div data-role="page" id="ViewDetails" data-theme="c">
+        <div data-role="header" data-theme="b">
+            <div data-role="navbar" data-position="fixed">
+                <ul>
+                    <li><a href="#Home" data-icon="home">Home</a></li>
+                    <li><a href="#News" data-icon="alert">Alerts</a></li>
+                    <li><a href="#Tips" data-icon="star">Tips</a></li>
+                    <li><a href="#Crime" data-icon="info">Report</a></li>
+                    <li><a href="#Station" data-icon="grid" class="ui-btn-active ui-state-persist">Stations</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /header -->
+        <div data-role="content">
+           <div id="ViewDetails-title" style="font-weight:bold; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:Gray"></div>
+           <div id="ViewDetails-content" style="font-style:italic; margin-top:30px; color:Red" ></div>
+           <div id="ViewDetails-source" style="font-size:xx-small; margin-top:30px"></div>
+        </div>
+        <!-- /content -->
+       <!-- <div data-role="footer">
+            <h4>
+                </h4>
+        </div>-->
+        
+    </div>
+</body>
+</html>
